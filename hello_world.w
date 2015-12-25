@@ -7,13 +7,14 @@
 \newif\ifshowcode
 \showcodetrue
 
-\usepackage{latexsym}
-\usepackage{listings}
-\usepackage{./nwhren}
-
 \usepackage{color}
 \definecolor{linkcolor}{rgb}{0, 0, 0.7}
 \definecolor{light}{gray}{.93}
+
+\usepackage{latexsym}
+\usepackage{./nwhren}
+
+\usepackage{listings}
 
 \usepackage[%
 backref,%
