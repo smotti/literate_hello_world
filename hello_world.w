@@ -91,7 +91,8 @@ takes no arguments and returns no value.
 Just to have something to write we implement a function to just print \emph{
 Hello World} to \textit{stdout}. 
 @d Hello World func
-@{func helloWorld() {
+@{// helloWorld just prints "Hello World" to stdout via fmt.Println.
+func helloWorld() {
   fmt.Println("Hello World")
 }
 @| helloWorld @}
