@@ -23,7 +23,7 @@ doc1: hello_world.pdf
 doc2:
 	# We need to run the commands twice because of the hyperlinks. Because we
 	# run doc1 before this we know the required files to do so exist already.
-	nuweb -o $(WEB)
+	nuweb -l -o $(WEB)
 	pdflatex hello_world.tex
 
 hello_world.go: $(WEB)
