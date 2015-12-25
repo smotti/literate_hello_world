@@ -1,0 +1,183 @@
+\newcommand{\NWtarget}[2]{#2}
+\newcommand{\NWlink}[2]{#2}
+\newcommand{\NWtxtMacroDefBy}{Fragment defined by}
+\newcommand{\NWtxtMacroRefIn}{Fragment referenced in}
+\newcommand{\NWtxtMacroNoRef}{Fragment never referenced}
+\newcommand{\NWtxtDefBy}{Defined by}
+\newcommand{\NWtxtRefIn}{Referenced in}
+\newcommand{\NWtxtNoRef}{Not referenced}
+\newcommand{\NWtxtFileDefBy}{File defined by}
+\newcommand{\NWtxtIdentsUsed}{Uses:}
+\newcommand{\NWtxtIdentsNotUsed}{Never used}
+\newcommand{\NWtxtIdentsDefed}{Defines:}
+\newcommand{\NWsep}{${\diamond}$}
+\newcommand{\NWnotglobal}{(not defined globally)}
+\newcommand{\NWuseHyperlinks}{}
+% 2015-12-25
+% It's been a while since I last wrote something in Latex.
+%
+% This is going to be an exploration of literate programming with nuweb.
+
+\documentclass[a4paper]{report}
+\newif\ifshowcode
+\showcodetrue
+
+\usepackage{latexsym}
+\usepackage{listings}
+\usepackage{./nwhren}
+
+\usepackage{color}
+\definecolor{linkcolor}{rgb}{0, 0, 0.7}
+\definecolor{light}{gray}{.93}
+
+\usepackage[%
+backref,%
+raiselinks,%
+pdfhighlight=/O,%
+pagebackref,%
+hyperfigures,%
+breaklinks,%
+colorlinks,%
+pdfpagemode=UseNone,%
+pdfstartview=FitBH,%
+linkcolor={linkcolor},%
+anchorcolor={linkcolor},%
+citecolor={linkcolor},%
+filecolor={linkcolor},%
+menucolor={linkcolor},%
+urlcolor={linkcolor}%
+]{hyperref}
+
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\topmargin}{0cm}
+\addtolength{\topmargin}{-\headheight}
+\addtolength{\topmargin}{-\headsep}
+\setlength{\textheight}{22.6cm}
+\setlength{\textwidth}{16.51cm}
+\setlength{\marginparwidth}{1.27cm}
+
+\title{An Exploration of Literate Programming\\ With Nuweb and Go}
+\date{}
+\author{smotti}
+
+\begin{document}
+
+\pagenumbering{roman}
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\tableofcontents
+
+\chapter{Hello World}
+\pagenumbering{arabic}
+
+In Go we first have to define the name of a package to which the file and its
+content belongs to. The package \textit{main}, that we use, will instruct the
+Go compiler to build an executable. Other package names indicate that it's a
+shared library.
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap1}\raggedright\small
+\NWtarget{nuweb1a}{} \verb@"hello_world.go"@\nobreak\ {\footnotesize {1a}}$\equiv$
+\vspace{-1ex}
+\begin{list}{}{} \item
+\mbox{}\lstinline@package main@\\
+\mbox{}\lstinline@@\hbox{$\langle\,${\itshape Import packages}\nobreak\ {\footnotesize \NWlink{nuweb1b}{1b}}$\,\rangle$}\lstinline@@\\
+\mbox{}\lstinline@@\hbox{$\langle\,${\itshape Hello World func}\nobreak\ {\footnotesize \NWlink{nuweb2}{2}}$\,\rangle$}\lstinline@@\\
+\mbox{}\lstinline@@\hbox{$\langle\,${\itshape Main func}\nobreak\ {\footnotesize \NWlink{nuweb1c}{1c}}$\,\rangle$}\lstinline@@\\
+\mbox{}\lstinline@@{\NWsep}
+\end{list}
+\vspace{-1.5ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtIdentsUsed\nobreak\  \verb@main@\nobreak\ \NWlink{nuweb1c}{1c}.
+\item{}
+\end{list}
+\end{minipage}\vspace{4ex}
+\end{flushleft}
+After that we import packages from the standard library that provide the
+required functionality (i.e. printing to stdout etc.).
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap2}\raggedright\small
+\NWtarget{nuweb1b}{} $\langle\,${\itshape Import packages}\nobreak\ {\footnotesize {1b}}$\,\rangle\equiv$
+\vspace{-1ex}
+\begin{list}{}{} \item
+\mbox{}\lstinline@import (@\\
+\mbox{}\lstinline@  "fmt"@\\
+\mbox{}\lstinline@)@\\
+\mbox{}\lstinline@@{\NWsep}
+\end{list}
+\vspace{-1.5ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroRefIn\ \NWlink{nuweb1a}{1a}.
+
+\item{}
+\end{list}
+\end{minipage}\vspace{4ex}
+\end{flushleft}
+Now me implement the \emph{main} function of our small program. A function in
+Go is declared with \emph{func} followed by the function name, an argument
+list and a list of value types the function returns. The main function in Go
+takes no arguments and returns no value.
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap3}\raggedright\small
+\NWtarget{nuweb1c}{} $\langle\,${\itshape Main func}\nobreak\ {\footnotesize {1c}}$\,\rangle\equiv$
+\vspace{-1ex}
+\begin{list}{}{} \item
+\mbox{}\lstinline@func main() {@\\
+\mbox{}\lstinline@  helloWorld()@\\
+\mbox{}\lstinline@}@\\
+\mbox{}\lstinline@@{\NWsep}
+\end{list}
+\vspace{-1.5ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroRefIn\ \NWlink{nuweb1a}{1a}.
+\item \NWtxtIdentsDefed\nobreak\  \verb@main@\nobreak\ \NWlink{nuweb1a}{1a}.\item \NWtxtIdentsUsed\nobreak\  \verb@helloWorld@\nobreak\ \NWlink{nuweb2}{2}.
+\item{}
+\end{list}
+\end{minipage}\vspace{4ex}
+\end{flushleft}
+\newpage
+Just to have something to write we implement a function to just print \emph{
+Hello World} to \textit{stdout}. 
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap4}\raggedright\small
+\NWtarget{nuweb2}{} $\langle\,${\itshape Hello World func}\nobreak\ {\footnotesize {2}}$\,\rangle\equiv$
+\vspace{-1ex}
+\begin{list}{}{} \item
+\mbox{}\lstinline@func helloWorld() {@\\
+\mbox{}\lstinline@  fmt.Println("Hello World")@\\
+\mbox{}\lstinline@}@\\
+\mbox{}\lstinline@@{\NWsep}
+\end{list}
+\vspace{-1.5ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroRefIn\ \NWlink{nuweb1a}{1a}.
+\item \NWtxtIdentsDefed\nobreak\  \verb@helloWorld@\nobreak\ \NWlink{nuweb1c}{1c}.
+\item{}
+\end{list}
+\end{minipage}\vspace{4ex}
+\end{flushleft}
+\chapter{Indexes}
+
+
+{\small\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \verb@"hello_world.go"@ {\footnotesize {\NWtxtDefBy} \NWlink{nuweb1a}{1a}.}
+\end{list}}
+
+{\small\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item $\langle\,$Hello World func\nobreak\ {\footnotesize \NWlink{nuweb2}{2}}$\,\rangle$ {\footnotesize {\NWtxtRefIn} \NWlink{nuweb1a}{1a}.}
+\item $\langle\,$Import packages\nobreak\ {\footnotesize \NWlink{nuweb1b}{1b}}$\,\rangle$ {\footnotesize {\NWtxtRefIn} \NWlink{nuweb1a}{1a}.}
+\item $\langle\,$Main func\nobreak\ {\footnotesize \NWlink{nuweb1c}{1c}}$\,\rangle$ {\footnotesize {\NWtxtRefIn} \NWlink{nuweb1a}{1a}.}
+\end{list}}
+
+{\small\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \verb@helloWorld@: \NWlink{nuweb1c}{1c}, \underline{\NWlink{nuweb2}{2}}.
+\item \verb@main@: \NWlink{nuweb1a}{1a}, \underline{\NWlink{nuweb1c}{1c}}.
+\end{list}}
+
+\end{document}
