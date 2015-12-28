@@ -13,6 +13,8 @@
 \newcommand{\NWsep}{${\diamond}$}
 \newcommand{\NWnotglobal}{(not defined globally)}
 \newcommand{\NWuseHyperlinks}{}
+%/* vim: set filetype=w : */
+%begin=tex
 % 2015-12-25
 % It's been a while since I last wrote something in Latex.
 %
@@ -48,6 +50,8 @@ filecolor={linkcolor},%
 menucolor={linkcolor},%
 urlcolor={linkcolor}%
 ]{hyperref}
+
+\usepackage[parfill]{parskip}
 
 \setlength{\oddsidemargin}{0cm}
 \setlength{\evensidemargin}{0cm}
@@ -99,6 +103,8 @@ shared library.
 \end{flushleft}
 After that we import packages from the standard library that provide the
 required functionality (i.e. printing to stdout etc.).
+%end=tex
+%begin=go
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap2}\raggedright\small
 \NWtarget{nuweb1b}{} $\langle\,${\itshape Import packages}\nobreak\ {\footnotesize {1b}}$\,\rangle\equiv$
@@ -118,10 +124,15 @@ required functionality (i.e. printing to stdout etc.).
 \end{list}
 \end{minipage}\vspace{4ex}
 \end{flushleft}
-Now me implement the \emph{main} function of our small program. A function in
+%end=go
+
+%begin=tex
+Now we implement the \emph{main} function of our small program. A function in
 Go is declared with \emph{func} followed by the function name, an argument
 list and a list of value types the function returns. The main function in Go
 takes no arguments and returns no value.
+%end=tex
+%begin=go
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap3}\raggedright\small
 \NWtarget{nuweb1c}{} $\langle\,${\itshape Main func}\nobreak\ {\footnotesize {1c}}$\,\rangle\equiv$
@@ -141,9 +152,14 @@ takes no arguments and returns no value.
 \end{list}
 \end{minipage}\vspace{4ex}
 \end{flushleft}
+%end=go
+
+%begin=tex
 \newpage
 Just to have something to write we implement a function to just print \emph{
 Hello World} to \textit{stdout}. 
+%end=tex
+%begin=go
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap4}\raggedright\small
 \NWtarget{nuweb2}{} $\langle\,${\itshape Hello World func}\nobreak\ {\footnotesize {2}}$\,\rangle\equiv$
@@ -164,6 +180,9 @@ Hello World} to \textit{stdout}.
 \end{list}
 \end{minipage}\vspace{4ex}
 \end{flushleft}
+%end=go
+
+%begin=tex
 \chapter{Indexes}
 
 
@@ -183,3 +202,4 @@ Hello World} to \textit{stdout}.
 \end{list}}
 
 \end{document}
+%end=tex

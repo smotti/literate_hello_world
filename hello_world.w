@@ -1,3 +1,5 @@
+%/* vim: set filetype=w : */
+%begin=tex
 % 2015-12-25
 % It's been a while since I last wrote something in Latex.
 %
@@ -33,6 +35,8 @@ filecolor={linkcolor},%
 menucolor={linkcolor},%
 urlcolor={linkcolor}%
 ]{hyperref}
+
+\usepackage[parfill]{parskip}
 
 \setlength{\oddsidemargin}{0cm}
 \setlength{\evensidemargin}{0cm}
@@ -72,33 +76,44 @@ shared library.
 
 After that we import packages from the standard library that provide the
 required functionality (i.e. printing to stdout etc.).
+%end=tex
+%begin=go
 @d Import packages
 @{import (
   "fmt"
 )
 @}
+%end=go
 
-Now me implement the \emph{main} function of our small program. A function in
+%begin=tex
+Now we implement the \emph{main} function of our small program. A function in
 Go is declared with \emph{func} followed by the function name, an argument
 list and a list of value types the function returns. The main function in Go
 takes no arguments and returns no value.
+%end=tex
+%begin=go
 @d Main func
 @{func main() {
   helloWorld()
 }
 @| main @}
+%end=go
 
+%begin=tex
 \newpage
 Just to have something to write we implement a function to just print \emph{
 Hello World} to \textit{stdout}. 
+%end=tex
+%begin=go
 @d Hello World func
 @{// helloWorld just prints "Hello World" to stdout via fmt.Println.
 func helloWorld() {
   fmt.Println("Hello World")
 }
 @| helloWorld @}
+%end=go
 
-
+%begin=tex
 \chapter{Indexes}
 
 @f
@@ -106,3 +121,4 @@ func helloWorld() {
 @u
 
 \end{document}
+%end=tex
